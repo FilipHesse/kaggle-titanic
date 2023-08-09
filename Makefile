@@ -27,8 +27,9 @@ requirements: test_environment
 
 ## Make Dataset
 data: requirements
-	$(PYTHON_INTERPRETER) src/data/make_dataset.py data/raw data/processed
-
+	kaggle competitions download titanic -p data/raw
+	unzip data/raw/titanic.zip -d data/raw
+	rm data/raw/titanic.zip
 ## Delete all compiled Python files
 clean:
 	find . -type f -name "*.py[co]" -delete
